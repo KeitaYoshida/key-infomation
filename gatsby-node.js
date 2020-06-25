@@ -45,7 +45,7 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
   const fileNode = getNode(node.parent)
-  const source = fileNode?.sourceInstanceName
+  const source = fileNode && fileNode.sourceInstanceName
 
   if (node.internal.type === `MarkdownRemark` && source === "blog") {
     const value = createFilePath({ node, getNode })
