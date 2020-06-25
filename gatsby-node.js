@@ -5,16 +5,18 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const result = await graphql(
-    `{
-      allContentfulBlogPost {
-        edges {
-          node {
-            slug
-            title
+    `
+      {
+        allContentfulBlogPost {
+          edges {
+            node {
+              slug
+              title
+            }
           }
         }
       }
-    }`
+    `
   )
 
   if (result.errors) {
@@ -42,13 +44,11 @@ exports.createPages = async ({ graphql, actions }) => {
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
-  console.log('==================')
-  console.log(getNode)
-  console.log('==================')
+  const fileNode = getNode(node.parent)
+  const source = fileNode?.sourceInstanceName
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === `MarkdownRemark` && source === "blog") {
     const value = createFilePath({ node, getNode })
-    console.log(value);
     createNodeField({
       name: `slug`,
       node,
