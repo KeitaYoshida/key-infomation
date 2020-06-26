@@ -2,6 +2,7 @@ import Typography from "typography"
 import Github from "typography-theme-github"
 
 Github.bodyFontFamily = ['Noto Sans JP', Github.bodyFontFamily]
+Github.headerFontFamily = ['Noto Sans JP', Github.bodyFontFamily]
 Github.overrideThemeStyles = () => {
   return {
     "a.gatsby-resp-image-link": {
