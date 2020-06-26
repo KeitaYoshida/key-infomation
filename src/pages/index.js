@@ -52,7 +52,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulBlogPost {
+    allContentfulBlogPost(sort: { fields: createdAt, order: DESC }) {
       edges {
         node {
           title
