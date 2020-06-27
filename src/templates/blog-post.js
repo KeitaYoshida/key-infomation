@@ -13,10 +13,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO
-        title={post.title}
-        description={post.description}
-      />
+      <SEO title={post.title} description={post.description.description} />
       <article>
         <header>
           <h1
@@ -37,7 +34,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             {post.date}
           </p>
         </header>
-        <section dangerouslySetInnerHTML={{ __html: post.body.childMarkdownRemark.html }} />
+        <section
+          dangerouslySetInnerHTML={{
+            __html: post.body.childMarkdownRemark.html,
+          }}
+        />
         <hr
           style={{
             marginBottom: rhythm(1),
@@ -60,14 +61,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         >
           <li>
             {previous && (
-              <Link to={previous.slug} rel="prev">
+              <Link to={"/" + previous.slug} rel="prev">
                 ← {previous.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.slug} rel="next">
+              <Link to={"/" + next.slug} rel="next">
                 {next.title} →
               </Link>
             )}
@@ -87,7 +88,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    contentfulBlogPost(slug: {eq: $slug}) {
+    contentfulBlogPost(slug: { eq: $slug }) {
       title
       body {
         childMarkdownRemark {
