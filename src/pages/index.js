@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
@@ -13,10 +12,9 @@ const BlogIndex = ({ data, location }) => {
   const posts = data.allContentfulBlogPost.edges
   const imageData = data.desktop.childImageSharp.fluid
   return (
-    <StyledBackgroundSection fluid={imageData}>
+    <StyledBackgroundSection fixed={imageData}>
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />
-        <Bio />
         {posts.map(({ node }) => {
           const title = node.title || node.slug
           return (
@@ -54,9 +52,12 @@ const StyledBackgroundSection = styled(BackgroundImage)`
   width: 100%;
   background-position: center center;
   background-repeat: repeat-y;
-  background-attachment: fixed;
   background-color: rgba(255, 255, 255, 0.9);
   background-blend-mode: lighten;
+  &::before,
+  &::after {
+    background-attachment: fixed;
+  }
 `
 export const pageQuery = graphql`
   query {
