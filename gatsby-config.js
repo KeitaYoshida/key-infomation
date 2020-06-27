@@ -15,7 +15,8 @@ module.exports = {
       twitter: `kylemathews`,
     },
   },
-  plugins: [{
+  plugins: [
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,
@@ -30,9 +31,29 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/image`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        // Add any options here
+      },
+    },
+    {
+      resolve: "gatsby-background-image",
+      options: {
+        specialChars: "/:",
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: [{
+        plugins: [
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,

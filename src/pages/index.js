@@ -5,46 +5,59 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
+import BackgroundImage from "gatsby-background-image"
+import styled from "styled-components"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allContentfulBlogPost.edges
+  const imageData = data.desktop.childImageSharp.fluid
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
-      <Bio />
-      {posts.map(({ node }) => {
-        const title = node.title || node.slug
-        return (
-          <article key={node.slug}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.publishDate}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.description.description /* ||  node.excerpt */,
-                }}
-              />
-            </section>
-          </article>
-        )
-      })}
-    </Layout>
+    <StyledBackgroundSection fluid={imageData}>
+      <Layout location={location} title={siteTitle}>
+        <SEO title="All posts" />
+        <Bio />
+        {posts.map(({ node }) => {
+          const title = node.title || node.slug
+          return (
+            <article key={node.slug}>
+              <header>
+                <h3
+                  style={{
+                    marginBottom: rhythm(1 / 4),
+                  }}
+                >
+                  <Link style={{ boxShadow: `none` }} to={node.slug}>
+                    {title}
+                  </Link>
+                </h3>
+                <small>{node.publishDate}</small>
+              </header>
+              <section>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: node.description.description /* ||  node.excerpt */,
+                  }}
+                />
+              </section>
+            </article>
+          )
+        })}
+      </Layout>
+    </StyledBackgroundSection>
   )
 }
 
 export default BlogIndex
 
+const StyledBackgroundSection = styled(BackgroundImage)`
+  width: 100%;
+  background-position: center center;
+  background-repeat: repeat-y;
+  background-attachment: fixed;
+  background-color: rgba(255, 255, 255, 0.9);
+  background-blend-mode: lighten;
+`
 export const pageQuery = graphql`
   query {
     site {
@@ -62,6 +75,13 @@ export const pageQuery = graphql`
           }
           publishDate(formatString: "yyyy-MM-DD")
           updatedAt(formatString: "yyyy-MM-DD")
+        }
+      }
+    }
+    desktop: file(relativePath: { eq: "keyInfoBack.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1920) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
