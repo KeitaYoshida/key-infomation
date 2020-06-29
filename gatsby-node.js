@@ -1,5 +1,5 @@
 const path = require(`path`)
-const fs = require('fs');
+const fs = require("fs")
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -59,9 +59,13 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 }
 
 exports.onPostBuild = () => {
-  fs.copyFile(`./google035c91c8c0e9fedb.html`, `./public/google035c91c8c0e9fedb.html`, (err) => {
-    if (err) {
-      throw err;
+  fs.copyFile(
+    `./google3c23faa42fec1236.html`,
+    `./public/google3c23faa42fec1236.html`,
+    err => {
+      if (err) {
+        throw err
+      }
     }
-  });
-};
+  )
+}

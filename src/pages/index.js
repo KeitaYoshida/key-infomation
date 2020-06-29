@@ -6,6 +6,7 @@ import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import BackgroundImage from "gatsby-background-image"
 import styled from "styled-components"
+import "gatsby-remark-vscode/styles.css"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title

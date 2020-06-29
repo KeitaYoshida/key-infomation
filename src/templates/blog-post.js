@@ -7,6 +7,7 @@ import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 import BackgroundImage from "gatsby-background-image"
 import styled from "styled-components"
+// import "gatsby-remark-vscode/styles.css"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.contentfulBlogPost
