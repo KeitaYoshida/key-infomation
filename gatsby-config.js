@@ -4,12 +4,12 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `key infomation`,
+    title: `key infomation - IT・Gatsby技術ブログ -`,
     author: {
       name: `keita`,
       summary: `who lives and works in San Francisco building useful things.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `IT技術ブログ key infomation 主にgatsby 関連の情報、gatsby cloud, netlify, contentful, shopifyの情報、記事を掲載`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
     social: {
       twitter: `kylemathews`,
