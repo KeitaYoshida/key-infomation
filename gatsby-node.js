@@ -56,3 +56,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     })
   }
 }
+
+exports.onPostBuild = () => {
+  fs.copyFile(`./google035c91c8c0e9fedb.html`, `./public/google035c91c8c0e9fedb.html`, (err) => {
+    if (err) {
+      throw err;
+    }
+  });
+};
