@@ -1,10 +1,37 @@
 import Typography from "typography"
 import Github from "typography-theme-github"
 
-Github.bodyFontFamily = ['Noto Sans JP', Github.bodyFontFamily]
-Github.headerFontFamily = ['Noto Sans JP', Github.bodyFontFamily]
 Github.overrideThemeStyles = () => {
   return {
+    'html,body,h1,h2,h3,h4,h5,h6': {
+      color: '#555',
+      fontFamily: [
+        'Noto Sans JP',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        'Segoe UI',
+        'Helvetica Neue',
+        'Hiragino Kaku Gothic ProN',
+        '"Yu Gothic"',
+        'YuGothic',
+        'Verdana',
+        'Meiryo',
+        '"M+ 1p"',
+        'sans-serif'
+      ].join(',')
+    },
+    "h1": {
+      fontSize: '1.5rem'
+    },
+    "h2": {
+      fontSize: '1.3rem',
+    },
+    "h3": {
+      fontSize: '1.1rem'
+    },
+    "h4": {
+      fontSize: '1rem'
+    },
     "a.gatsby-resp-image-link": {
       boxShadow: `none`,
     },
