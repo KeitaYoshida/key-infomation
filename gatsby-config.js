@@ -46,7 +46,9 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: [{
+        plugins: [
+          `gatsby-remark-code-titles`,
+          {
             resolve: `gatsby-remark-vscode`,
             options: {
               theme: "Monokai Dimmed",
@@ -54,6 +56,10 @@ module.exports = {
               injectStyles: true,
               replaceColor: x => x,
               logLevel: "warn",
+              languageAliases: {
+                shell: 'sh',
+                javascript: 'js'
+              }
             },
           },
           {

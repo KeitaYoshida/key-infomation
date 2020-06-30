@@ -17,9 +17,31 @@ const BlogBody = styled.section`
   p, li {
     line-height: 2;
   }
+  .grvsc-container {
+    font-family: 'Noto Sans JP', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI',
+      'Helvetica Neue', 'Hiragino Kaku Gothic ProN', '"Yu Gothic"', 'YuGothic',
+      'Verdana', 'Meiryo', '"M+ 1p"', 'sans-serif';
+      border-top-left-radius: 0;
+      border-bottom-right-radius: 0;
+  }
+  .gatsby-code-title {
+    padding: 0.3em 0;
+    color: #858886;
+    z-index: 0;
+
+    border-radius: 0.3em;
+    font-size: 0.8rem;
+    margin-bottom: -0.3em;
+  }
+  .gatsby-code-title:before { content: '[ ' }
+  .gatsby-code-title:after { content: ' ]' }
 `;
-const Category = styled.span`
+
+const Category = styled.p`
   font-size:1rem;
+  color: #888;
+  margin-top:0.5rem;
+  margin-left:3rem;
 `
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
