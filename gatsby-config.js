@@ -38,6 +38,15 @@ module.exports = {
       },
     },
     {
+      //styled-componentsより先に読み込む
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-styled-components`,
       options: {
         // Add any options here
