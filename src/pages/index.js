@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import CssBaseline from "@material-ui/core/CssBaseline";
+import BottomInfomation from "../components/bottomInfomation"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -40,6 +41,7 @@ const BlogIndex = ({ data, location }) => {
             </article>
           )
         })}
+        <BottomInfomation />
       </Layout>
     </>
   )
